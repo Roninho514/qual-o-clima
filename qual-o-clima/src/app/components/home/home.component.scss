@@ -1,0 +1,34 @@
+:host {
+  display: block;
+  width: 100vw;
+}
+.home-container{
+  width: 100%;
+  height: auto;
+
+  .header-container{
+    width: 100%;
+    height: 15rem;
+    display: flex;
+    justify-content: start;
+    background-color: #0985FC;
+
+    .icon-container{
+      width: 204px;
+      margin-top: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    h1{
+      font-size: 18px;
+      color: #ffffff;
+      margin: 1rem 0 0 1rem;
+    }
+  }
+}

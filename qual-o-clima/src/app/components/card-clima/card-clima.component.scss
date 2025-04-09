@@ -1,0 +1,14 @@
+.card-clima-container{
+  width: 319px;
+  height: 203px;
+  background-color: #f4f4f4;
+  box-shadow: 32px 24px 3px -15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+
+  .header-card {
+    width: 100%;
+
+  }
+}
