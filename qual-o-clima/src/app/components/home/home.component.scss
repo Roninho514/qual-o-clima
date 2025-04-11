@@ -40,5 +40,46 @@
 .information-container{
   display: flex;
   justify-content: space-around;
-  margin-top: 6rem;
+  margin-top: 2rem;
+}
+
+.city-field-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 21.5rem;
+}
+
+.label-input-city {
+  color: #fefefe;
+}
+
+.input-city-field {
+  color: #fefefe;
+}
+
+.city-field{
+  margin: 0 auto;
+  width: 62%;
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled){
+    box-shadow: 0px 21px 12px 0px rgba(0,0,0,0.1);
+  }
+
+  .mdc-text-field--filled {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+
+  .mdc-text-field--no-label:not(.mdc-text-field--textarea) .mat-mdc-form-field-input-control.mdc-text-field__input, .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+    height: auto;
+    color: #fefefe;
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #0D6ECC;
+  }
 }

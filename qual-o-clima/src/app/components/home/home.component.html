@@ -6,15 +6,12 @@
     </div>
   </div>
 
-  <mat-form-field class="example-form-field">
-    <mat-label>Clearable input</mat-label>
-    <input matInput type="text" [(ngModel)]="value">
-    @if (value) {
-      <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-        <mat-icon>close</mat-icon>
-      </button>
-    }
-  </mat-form-field>
+  <div class="city-field-container">
+    <mat-form-field class="city-field">
+      <mat-label class="label-input-city" *ngIf="inputCity == ''">Digite a cidade...</mat-label>
+      <input matInput type="text" [(ngModel)]="inputCity" class="input-city-field">
+    </mat-form-field>
+  </div>
 
   <div class="information-container">
     <app-card-clima *ngFor="let item of clima"></app-card-clima>
