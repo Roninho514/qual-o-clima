@@ -8,7 +8,7 @@ import { ClimateService } from '../../service/climate.service';
 })
 export class HomeComponent implements OnInit {
   constructor(private climateService: ClimateService){}
-  clima : any;
+  clima : string[] = ['1', '2', '3', '4', '5'];
 
   ngOnInit(): void {
     /* this.climateService.getClimate().subscribe((data) => {
