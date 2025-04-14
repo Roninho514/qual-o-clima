@@ -36,3 +36,19 @@
 .example-form-field {
   width: 200px;
 }
+
+.state-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+mat-form-field {
+  width: 300px;
+}
+
+button {
+  width: 120px;
+}
