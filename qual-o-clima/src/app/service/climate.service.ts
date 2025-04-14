@@ -15,4 +15,8 @@ export class ClimateService {
     console.log("Chamou");
      /* this.http.get(this.url); */
   }
+  buscarClimaPorEstado(estado: string): Observable<any> {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${estado}&appid=68acac519acf6ce38e931e8829534c33&units=metric&lang=pt_br`;
+    return this.http.get<any>(url);
+  }
 }
