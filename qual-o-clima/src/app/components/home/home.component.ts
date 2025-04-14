@@ -7,41 +7,36 @@ import { ClimateService } from '../../service/climate.service';
   styleUrl: './home.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   constructor(private climateService: ClimateService){}
-  clima : number[] = [1, 2, 3, 4, 5];
+  clima : any ;
   inputCity : string = '';
-
-  estado: string = '';
+  validateState : boolean = false;
   erroEstado: string | null = null;
 
   validarEstado() {
     // Limpa erro anterior
     this.erroEstado = null;
-  
+
     // Validação básica: estado deve ter 2 caracteres e ser letras
-    if (!this.estado || this.estado.trim().length !== 2 || !/^[A-Za-z]{2}$/.test(this.estado)) {
-      this.erroEstado = 'Por favor, digite a sigla do estado com 2 letras (ex: SP).';
-      return;
+    if (!this.inputCity || this.inputCity === " " || this.inputCity === "") {
+      this.erroEstado = 'Por favor, Não deixe espaço vazio.';
+      return false;
     }
-  
-    // Enviar para o serviço
-    this.climateService.buscarClimaPorEstado(this.estado.toUpperCase()).subscribe({
-      next: (resposta) => {
-        console.log('Dados do clima:', resposta);
-        // Aqui você pode atualizar o template com os dados retornados
-      },
-      error: (erro) => {
-        this.erroEstado = 'Erro ao buscar clima. Tente novamente.';
-        console.error(erro);
-      }
-    });
+    return true;
   }
 
-  ngOnInit(): void {
-    /* this.climateService.getClimate().subscribe((data) => {
-      this.clima = data;
-      console.log(this.clima);
-    }); */
+  getStateApi() {
+
+    this.validateState = this.validarEstado();
+    // Enviar para o serviço
+    if(this.validateState){
+      this.climateService.buscarClimaPorEstado(this.inputCity.toUpperCase()).subscribe((data) => {
+          this.clima = data.forecast.forecastday;
+          console.log('Dados do clima:', this.clima);
+          // Aqui você pode atualizar o template com os dados retornados
+      });
+    }
   }
+
 }

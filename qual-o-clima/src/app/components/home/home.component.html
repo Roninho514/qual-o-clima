@@ -9,11 +9,11 @@
   <div class="city-field-container">
     <mat-form-field class="city-field">
       <mat-label class="label-input-city" *ngIf="inputCity == ''">Digite a cidade...</mat-label>
-      <input matInput type="text" [(ngModel)]="inputCity" class="input-city-field">
+      <input matInput type="text" [(ngModel)]="inputCity" class="input-city-field" (keyup.enter)="getStateApi()">
     </mat-form-field>
   </div>
 
   <div class="information-container">
-    <app-card-clima *ngFor="let item of clima"></app-card-clima>
+    <app-card-clima *ngFor="let item of clima" [data]="item"></app-card-clima>
   </div>
 </div>

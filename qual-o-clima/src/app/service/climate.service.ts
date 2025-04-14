@@ -9,14 +9,13 @@ export class ClimateService {
 
   constructor(private http: HttpClient) { }
 
-  url : string = 'https://api.openweathermap.org/data/2.5/weather?q=S%C3%A3o%20Paulo&appid=68acac519acf6ce38e931e8829534c33&units=metric&lang=pt_br';
+  url : string = 'http://api.weatherapi.com/v1/forecast.json?key=7540376f250b4ea39d0142514250904&';
 
   getClimate() {
     console.log("Chamou");
      /* this.http.get(this.url); */
   }
   buscarClimaPorEstado(estado: string): Observable<any> {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${estado}&appid=68acac519acf6ce38e931e8829534c33&units=metric&lang=pt_br`;
-    return this.http.get<any>(url);
+    return this.http.get<any>(this.url + `q=${estado}&days=7&aqi=no&alerts=no`);
   }
 }

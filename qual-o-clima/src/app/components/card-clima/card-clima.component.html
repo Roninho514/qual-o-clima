@@ -1,20 +1,20 @@
 <div class="card-clima-container">
   <div class="day-text-container">
-    <span>09/04/2025</span>
+    <span>{{data.date | date:'dd/MM/yyyy'}}</span>
   </div>
 
   <div class="header-card">
-    <span class="number-graus">49°c</span>
-    <span class="icone-climate">Icone</span>
+    <span class="number-graus">{{data.day.avgtemp_c}}°c</span>
+    <img class="icone-climate" [src]="data.day.condition.icon" alt="imagem da previsão do tempo">
   </div>
 
   <div class="body-card">
     <div class="box-rain">
-      <span>Risco de chuva: 17 %</span>
+      <span>Risco de chuva: {{data.day.daily_chance_of_rain}}%</span>
     </div>
 
     <div class="box-humidity">
-      <span>Umidade: 88%</span>
+      <span>Umidade: {{data.day.avghumidity}}%</span>
     </div>
   </div>
 </div>
