@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ClimateService } from '../../service/climate.service';
+import { ClimaInformation, Forecastday } from '../../shared/models/clima.model';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +10,13 @@ import { ClimateService } from '../../service/climate.service';
 })
 export class HomeComponent {
   constructor(private climateService: ClimateService){}
-  clima : any ;
+  climation !: ClimaInformation;
+  climationDay !: Forecastday[];
   inputCity : string = '';
-  validateState : boolean = false;
+  resultValidateState : boolean = false;
   erroEstado: string | null = null;
 
-  validarEstado() {
+  validateState() : boolean{
     // Limpa erro anterior
     this.erroEstado = null;
 
@@ -26,14 +28,13 @@ export class HomeComponent {
     return true;
   }
 
-  getStateApi() {
-
-    this.validateState = this.validarEstado();
+  getStateApi() : void {
+    this.resultValidateState = this.validateState();
     // Enviar para o serviço
-    if(this.validateState){
-      this.climateService.buscarClimaPorEstado(this.inputCity.toUpperCase()).subscribe((data) => {
-          this.clima = data.forecast.forecastday;
-          console.log('Dados do clima:', this.clima);
+    if(this.resultValidateState){
+      this.climateService.getClimateForState(this.inputCity.toUpperCase()).subscribe((data : ClimaInformation) => {
+          this.climation = data;
+          this.climationDay = data.forecast.forecastday;
           // Aqui você pode atualizar o template com os dados retornados
       });
     }
